@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "./ShareButton.module.css"
 
 const ShareButton = ({ url }) => {
     const shareUrl = () => {
@@ -12,7 +13,7 @@ const ShareButton = ({ url }) => {
         }
     };
 
-    return <button onClick={shareUrl}>Поделиться</button>;
+    return <button className={styles.btn} onClick={shareUrl}>Поделиться</button>;
 };
 
 export default ShareButton;

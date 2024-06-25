@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './BrowserInfo.module.css'
 
 const BrowserInfo = () => {
     const getBrowserInfo = () => {
@@ -19,10 +20,10 @@ const BrowserInfo = () => {
     };
 
     return (
-        <div>
+        <footer className={styles.footerBlock}>
             <h2>Информация о браузере</h2>
             <p>Вы используете: {getBrowserInfo()}</p>
-        </div>
+        </footer>
     );
 };
 

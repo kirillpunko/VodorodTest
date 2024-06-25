@@ -1,30 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import CurrencyRates from './components/CurrencyRates.jsx';
-import CurrencyDynamic from './components/CurrencyDynamic.jsx';
-import CurrencyConverter from './components/CurrencyConverter.jsx';
-import BrowserInfo from './components/BrowserInfo.jsx';
-import ShareButton from './components/ShareButton.jsx';
+import CurrencyRates from './components/CurrencyRates/CurrencyRates.jsx';
+import CurrencyDynamic from './components/CurrencyDynamic/CurrencyDynamic.jsx';
+import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter.jsx';
+import BrowserInfo from './components/BrowserInfo/BrowserInfo.jsx';
+import ShareButton from './components/ShareButton/ShareButton.jsx';
+import styles from './App.module.css'
 
 const App = () => {
     return (
         <Router>
-            <div>
+            <div className={styles.container}>
                 <nav>
-                    <ul>
-                        <li><Link to="/curses">Курсы валют</Link></li>
-                        <li><Link to="/dynamic">Динамика курса</Link></li>
-                        <li><Link to="/converter">Конвертер валют</Link></li>
+                    <ul className={styles.navigation}>
+                        <li className={styles.list_item}><Link className={styles.link} to="/">Курсы валют</Link></li>
+                        <li className={styles.list_item}><Link className={styles.link} to="/dynamic">Динамика курса</Link></li>
+                        <li className={styles.list_item}><Link className={styles.link} to="/converter">Конвертер валют</Link></li>
                     </ul>
                 </nav>
-                <BrowserInfo />
                 <Routes>
-                    <Route path="/curses" element={<CurrencyRates/>} />
+                    <Route exact path="/" element={<CurrencyRates/>} />
                     <Route path="/dynamic" element={<CurrencyDynamic/>} />
                     <Route path="/converter" element={<CurrencyConverter/>} />
                 </Routes>
                 <ShareButton url={window.location.href} />
             </div>
+            <BrowserInfo />
         </Router>
     );
 };

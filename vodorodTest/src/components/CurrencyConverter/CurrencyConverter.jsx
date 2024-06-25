@@ -11,6 +11,7 @@ const CurrencyConverter = () => {
     const [scaleA, setScaleA] = useState(null);
     const [scaleB, setScaleB] = useState(null);
 
+
     useEffect(() => {
         if (currencyA) {
             axios.get(`https://www.nbrb.by/api/exrates/rates/${currencyA}?periodicity=0&parammode=2`)
@@ -18,7 +19,13 @@ const CurrencyConverter = () => {
                     setRateA(response.data.Cur_OfficialRate);
                     setScaleA(response.data.Cur_Scale);
                 })
-                .catch(error => console.error('Error fetching rateA', error));
+                .catch((error)=>{
+                    if (currencyA==='BYN'){
+                        setRateA(1);
+                        setScaleA(1);
+                    }
+                    else
+                        console.error('Error fetching rateA', error)});
         }
         if (currencyB) {
             axios.get(`https://www.nbrb.by/api/exrates/rates/${currencyB}?periodicity=0&parammode=2`)
@@ -26,7 +33,13 @@ const CurrencyConverter = () => {
                     setRateB(response.data.Cur_OfficialRate);
                     setScaleB(response.data.Cur_Scale);
                 })
-                .catch(error => console.error('Error fetching rateB', error));
+                .catch((error)=>{
+                    if (currencyB==='BYN'){
+                        setRateA(1);
+                        setScaleA(1);
+                    }
+                    else
+                        console.error('Error fetching rateB', error)});
         }
     }, [currencyA, currencyB]);
 

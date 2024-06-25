@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import SelectCurrency from "../selectCurrency/selectCurrency.jsx";
 
 const CurrencyDynamic = () => {
     const [startDate, setStartDate] = useState('');
@@ -11,7 +12,6 @@ const CurrencyDynamic = () => {
         try {
             const response = await axios.get(`https://api.nbrb.by/exrates/rates/dynamics/${currency}?startdate=${startDate}&enddate=${endDate}`);
             setDynamics(response.data);
-            console.log(response);
         } catch (error) {
             console.error('Error fetching the currency dynamics', error);
         }
@@ -22,7 +22,7 @@ const CurrencyDynamic = () => {
             <h2>Динамика курса валют</h2>
             <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
             <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-            <input type="text" value={currency} onChange={(e) => setCurrency(e.target.value)} placeholder="Аббревиатура валюты" />
+            <SelectCurrency val={currency} change={(e) => setCurrency(e.target.value)}/>
             <button onClick={fetchDynamics}>Получить динамику</button>
             {dynamics.length > 0 && (
                 <ul>

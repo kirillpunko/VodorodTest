@@ -1,0 +1,28 @@
+.blockHeader{
+    margin: 20px 0;
+    font-size: 30px;
+    font-weight: 200;
+    text-align: center;
+}
+.btn{
+    background-color: darkred;
+    color: white;
+    border: 1px solid #b67272;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+.inputData{
+    display: block;
+    padding: 5px 15px;
+}
+.formBlock{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.tableBlock{
+    margin: 0 auto;
+}

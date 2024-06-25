@@ -1,0 +1,11 @@
+.footerBlock{
+    width: 100%;
+    background-color: darkred;
+    color: white;
+    border-top: 1px solid #b67272;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 20px;
+}
