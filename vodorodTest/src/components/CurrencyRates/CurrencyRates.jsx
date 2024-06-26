@@ -1,9 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
-import styles from "./CurrencyRate.module.css"
+import styles from "./CurrencyRates.module.css"
+import {useLocation} from "react-router-dom";
+import ShareButton from "../ShareButton/ShareButton.jsx";
+
 
 const CurrencyRates = () => {
-    const [date, setDate] = useState('');
+    const getParams = new URLSearchParams(useLocation().search);
+    const [date, setDate] = useState(getParams.get('date') || '');
     const [rates, setRates] = useState([]);
 
     const fetchRates = async () => {
@@ -15,6 +19,13 @@ const CurrencyRates = () => {
             console.error('Error fetching the currency rates', error);
         }
     };
+
+    useEffect(() => {
+        if (date) {
+            fetchRates();
+        }
+    }, []);
+
     return (
         <div>
             <h2 className={styles.blockHeader}>Курс валют на определенную дату</h2>
@@ -28,7 +39,7 @@ const CurrencyRates = () => {
                     <tr>
                         <th>Название валюты</th>
                         <th>Количество</th>
-                        <th>Курс в белорусских рублях</th>
+                        <th>Курс в BYN</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +53,7 @@ const CurrencyRates = () => {
                     </tbody>
                 </table>
             )}
+            <ShareButton params={{ date }} />
         </div>
     );
 };

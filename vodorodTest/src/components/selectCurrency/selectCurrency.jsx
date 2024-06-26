@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
-const SelectCurrency = ({val, change}) => {
+const SelectCurrency = ({styles, val, change}) => {
     const [currencies, setCurrencies] = useState([]);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const SelectCurrency = ({val, change}) => {
         fetchCurrencies();
     }, []);
     return (
-        <select value={val} onChange={change}>
+        <select className={styles} value={val} onChange={change}>
             <option value="">Выберите валюту</option>
             {currencies.map((cur) => (
                 <option key={cur.Cur_ID} value={cur.Cur_ID}>

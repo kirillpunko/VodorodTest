@@ -4,7 +4,6 @@ import CurrencyRates from './components/CurrencyRates/CurrencyRates.jsx';
 import CurrencyDynamic from './components/CurrencyDynamic/CurrencyDynamic.jsx';
 import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter.jsx';
 import BrowserInfo from './components/BrowserInfo/BrowserInfo.jsx';
-import ShareButton from './components/ShareButton/ShareButton.jsx';
 import styles from './App.module.css'
 
 const App = () => {
@@ -23,7 +22,6 @@ const App = () => {
                     <Route path="/dynamic" element={<CurrencyDynamic/>} />
                     <Route path="/converter" element={<CurrencyConverter/>} />
                 </Routes>
-                <ShareButton url={window.location.href} />
             </div>
             <BrowserInfo />
         </Router>
